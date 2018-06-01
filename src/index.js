@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { applyMiddleware, createStore } from 'redux';
+import './App.css';
+import App from './components/app';
+import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-import reducers from './reducers';
 
-import App from './components/app';
+
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 

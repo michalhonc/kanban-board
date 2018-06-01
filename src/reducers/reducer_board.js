@@ -1,4 +1,4 @@
-import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY } from '../actions/index';
+import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY, DELETE_STORY } from '../actions/index';
 import shortid from 'shortid';
 
 const defaultState = 
@@ -85,6 +85,13 @@ export default function(state = defaultState, action) {
             });
             
             return [ ...state ];
+      }
+      case DELETE_STORY: {
+            const parent = action.payload.parent;
+            const id = action.payload.id;
+
+            state[parent].tickets.splice(id,1);
+            return [ ...state ]; 
       }
       default:
          return state;
