@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { addStory } from '../actions/index';
 
 class AddPost extends React.Component {
    //props board title;
@@ -9,7 +10,7 @@ class AddPost extends React.Component {
       this.state = { 
          storyName: '',
          storyDesc: '',
-         storyType: ''
+         storyType: 'user-story'
       };
 
       this.onInputChange = this.onInputChange.bind(this);
@@ -35,7 +36,6 @@ class AddPost extends React.Component {
 
       this.props.addStory(this.state, this.props.title);
       
-      this.setState({ storyType: '' });
       this.setState({ storyDesc: '' });
       this.setState({ storyName: '' });
    }
@@ -44,15 +44,15 @@ class AddPost extends React.Component {
    
       return (
             <form className="story-form" onSubmit={this.onSubmit}>
-               <select value={this.state.storyType} onChange={this.onSelectChange}>
+               <select className="story-select" value={this.state.storyType} onChange={this.onSelectChange}>
                   <option value="user-story">User story</option>
                   <option value="defect">Defect</option>
                   <option value="task">Task</option>
                   <option value="feature">Feature</option>
                </select>
-               <input type="text" name="name" onChange={this.onInputChange} />
-               <textarea name="desc" onChange={this.onTextareaChange} />
-               <input type="submit" name="submit" value="Submit" />
+               <input className="add-story-button" type="submit" name="submit" value="Add new task" />
+               <input className="add-story-text" placeholder="Name.." type="text" name="name" value={this.state.storyName} onChange={this.onInputChange} />
+               <textarea className="add-story-text" placeholder="Description.." name="desc" value={this.state.storyDesc} onChange={this.onTextareaChange} />
             </form>
       );
    }

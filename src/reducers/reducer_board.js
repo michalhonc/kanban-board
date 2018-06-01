@@ -1,4 +1,5 @@
-import { FETCH_BOARD, ADD_STORY } from '../actions/index';
+import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY } from '../actions/index';
+import shortid from 'shortid';
 
 const defaultState = 
    [{
@@ -7,17 +8,10 @@ const defaultState =
       tickets: [
          {
             id: '13',
-            name: 'Integration',
-            desc: 'The integration of this provider',
+            name: 'B',
+            desc: '',
             status: 'New',
             type: 'user-story',
-         },
-         {
-            id: '15',
-            name: 'provider',
-            desc: 'The integration of this provider',
-            status: 'New',
-            type: 'defect',
          }
       ]
    },
@@ -26,11 +20,11 @@ const defaultState =
       title: 'nolog',
       tickets: [
          {
-            id: '13',
-            name: 'Integration',
-            desc: 'The integration of this provider',
+            id: '11234',
+            name: 'A',
+            desc: '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333323333333333333333333333333333333333333333333',
             status: 'New',
-            type: 'user-story',
+            type: 'defect',
          }
       ]
    }]
@@ -41,22 +35,57 @@ export default function(state = defaultState, action) {
             return state;
    
       case ADD_STORY:
-            /*
-            action.payload = {
-                  ticket: [{...}],
-                  board: title
-            }
-            */
-           console.log(action.payload);
-      //      const payload = state.map(i => {
-      //            if(i.title === action.payload.board) {
-      //                   return i.tickets.concat(action.payload.ticket);
-      //            }
-      //            return i;
-      //      });
-      //       return payload;
-            return state;
+            const ticket = {
+                  id: shortid.generate(),
+                  name: action.payload.request.storyName,
+                  desc: action.payload.request.storyDesc,
+                  status: 'New',
+                  type: action.payload.request.storyType
+               }
+           
+            const payload = state.map(i => {
+                  if(i.title === action.payload.title) {
+                        return {
+                              tickets: i.tickets.concat(ticket),
+                              title: i.title,
+                              order: i.order
+                        };
+                  }
+                  return i;
+            });
 
+            return payload;
+
+      case ADD_BOARD: {
+
+            const payload = state.concat([{
+                  order: state.length,
+                  title: action.payload,
+                  tickets: []
+               }]);
+            return payload;
+      }
+
+      case MOVE_STORY: {
+            const id = action.payload.id;
+            const type = action.payload.type;
+            const parent = action.payload.parent;
+            
+            state[parent].tickets.map((item, index) => {
+                  if(item.id === id) {
+                        if(type === 'right' && state[parent+1] != null) {
+                              state[parent+1].tickets.push(item);
+                              state[parent].tickets.splice(index, 1);
+                        } else if(type === 'left' && state[parent-1] != null) {
+                              state[parent-1].tickets.push(item);
+                              state[parent].tickets.splice(index, 1);
+                        }
+                  }
+                  return item;
+            });
+            
+            return [ ...state ];
+      }
       default:
          return state;
    }

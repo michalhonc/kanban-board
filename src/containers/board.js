@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AddPost from '../components/add_story';
+import { fetchBoard } from '../actions/index';
+import AddPost from '../containers/add_story';
 import UserStory from '../components/user_story';
 
 
@@ -10,24 +11,28 @@ class Board extends React.Component {
       this.props.fetchBoard();
    }
 
-   renderBoard(item) {
-      return (
-         <div key={item.order} className="story-list">
-            <h3 className="story-header">{item.title}</h3>
-            <div className="story-body">
-               {item.tickets.map(story => {
-                  return (<UserStory key={story.id} props={story}  />);
-               })}
-               <AddPost title={item.title} />
+   renderBoard(boards) {
+      return boards.map(item => {
+         return (
+            <div key={item.order} className="story-list" id={item.order}>
+               <h3 className="story-header">{item.title}</h3>
+               <div className="story-body">
+                  {item.tickets.map((story, index) => {
+                     story.index = index;
+                     return (<UserStory key={story.id} story={story} parent={item.order} />);
+                  })}
+                  <hr />
+                  <AddPost title={item.title} />
+               </div>
             </div>
-         </div>
-      );
+         );
+      })
    }
 
    render() {
       return (
-         <div>
-            {this.props.board.map(item => this.renderBoard(item))}
+         <div className={`board board-${this.props.board.length}`}>
+            {this.renderBoard(this.props.board)}
          </div>
       );
    }

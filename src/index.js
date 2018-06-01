@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 import reducers from './reducers';
 
-import Board from './containers/board';
+import App from './components/app';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -16,7 +16,7 @@ ReactDOM.render(
       <div>
          <BrowserRouter>
             <Switch>
-               <Route to="/" component={Board}/>
+               <Route to="/" component={App}/>
             </Switch>
          </BrowserRouter>
       </div>
