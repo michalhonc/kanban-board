@@ -35,33 +35,32 @@ input[type=submit] {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1em;
-  color: #03A9F4;
+  color: #757575;
   background-color: transparent;
-  border: 2px solid #03A9F4;
+  border: 2px solid #757575;
   border-radius: 9999em;
   padding: 0.5em 2em;
   margin: 1em auto;
   transition-duration: 0.25s; }
 
 .input-add:hover {
-  background-color: #03A9F4;
-  color: #eee;
+  background-color: #E0E0E0;
   transition-duration: 0.25s; }
 
 .add-board form input {
-  border: 2px solid #03A9F4;
+  border: 2px solid #757575;
   background-color: transparent;
   border-radius: 9999em;
   line-height: 1.5;
   font-size: 1.25em;
   color: #3b3b3b;
   outline: none;
-  padding: 0 .4em;
+  padding: .2em .6em;
   transition-duration: 1s; }
 
 .add-board form input:focus {
   border: 2px solid transparent;
-  box-shadow: 0 0 20px 1px #03A9F4;
+  box-shadow: 0 0 20px 1px #757575;
   transition-duration: 0.25s; }
 
 .board {
@@ -342,7 +341,8 @@ input[type=submit] {
   height: 2em;
   border: none;
   outline: none;
-  margin: 0.5em 0; }
+  margin: 0.5em 0;
+  border-radius: 50%; }
 
 .button-left {
   display: inline-block;
@@ -446,8 +446,8 @@ input[type=submit] {
   transition-duration: 0.2s; }
 
 .add-story-button:hover {
-  background-color: #757575;
-  color: #E0E0E0;
+  background-color: #E0E0E0;
+  color: #757575;
   transition-duration: 0.2s; }
 
 .story-form textarea {

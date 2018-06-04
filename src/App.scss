@@ -57,9 +57,9 @@ input[type=submit] {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1em;
-  color: $blue;
+  color: $darkgrey;
   background-color: transparent;
-  border: 2px solid $blue;
+  border: 2px solid $darkgrey;
   border-radius: 9999em;
   padding: 0.5em 2em;
   margin: 1em auto;
@@ -67,26 +67,25 @@ input[type=submit] {
 }
 
 .input-add:hover {
-  background-color: $blue;
-  color: #eee;
+  background-color: $lightgrey;
   transition-duration: 0.25s;
 }
 
 .add-board form input {
-  border: 2px solid $blue;
+  border: 2px solid $darkgrey;
   background-color: transparent;
   border-radius: 9999em;
   line-height: 1.5;
   font-size: 1.25em;
   color: #3b3b3b;
   outline: none;
-  padding: 0 .4em;
+  padding: .2em .6em;
   transition-duration: 1s;
 }
 
 .add-board form input:focus {
   border: 2px solid transparent;
-  box-shadow: 0 0 20px 1px $blue;
+  box-shadow: 0 0 20px 1px $darkgrey;
   transition-duration: 0.25s;
 }
 
@@ -147,6 +146,7 @@ input[type=submit] {
   border: none;
   outline: none;
   margin: 0.5em 0;
+  border-radius: 50%;
 }
 
 .button-left {
@@ -269,8 +269,8 @@ input[type=submit] {
 }
 
 .add-story-button:hover {
-  background-color: $darkgrey;
-  color: $lightgrey;
+  background-color: $lightgrey;
+  color: $darkgrey;
   transition-duration: 0.2s;
 }
 
