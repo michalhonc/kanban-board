@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchBoard } from '../actions/index';
+import { fetchBoard, deleteBoard } from '../actions/index';
 import AddPost from '../containers/add_story';
 import UserStory from '../components/user_story';
 
@@ -15,6 +15,7 @@ class Board extends React.Component {
       return boards.map(item => {
          return (
             <div key={item.order} className="story-list" id={item.order}>
+            <input className="delete-board" type="submit" value="X" onClick={() => this.props.deleteBoard(item.order)} />
                <h3 className="story-header">{item.title}</h3>
                <div className="story-body">
                   {item.tickets.map((story, index) => {
@@ -47,7 +48,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
    return bindActionCreators({ 
-      fetchBoard
+      fetchBoard,
+      deleteBoard
    }, dispatch);
 }
 

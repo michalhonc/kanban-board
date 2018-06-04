@@ -1,4 +1,4 @@
-import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY, DELETE_STORY } from '../actions/index';
+import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY, DELETE_STORY, DELETE_BOARD } from '../actions/index';
 import shortid from 'shortid';
 
 const defaultState = 
@@ -92,6 +92,15 @@ export default function(state = defaultState, action) {
 
             state[parent].tickets.splice(id,1);
             return [ ...state ]; 
+      }
+      case DELETE_BOARD: {
+            state.splice(action.payload, 1);
+            
+            // Order has to start with 0 and be incrementaly added
+            state.forEach((item, index) => {
+                  return item.order = index;
+            })
+            return [ ...state ];
       }
       default:
          return state;

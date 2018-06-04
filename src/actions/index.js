@@ -3,6 +3,7 @@ export const ADD_STORY = 'ADD_STORY';
 export const ADD_BOARD = 'ADD_BOARD';
 export const MOVE_STORY = 'MOVE_STORY';
 export const DELETE_STORY = 'DELETE_STORY';
+export const DELETE_BOARD = 'DELETE_BOARD';
 
 export function fetchBoard() {
    return {
@@ -45,5 +46,12 @@ export function deleteStory(parent, id) {
          parent,
          id
       }
+   }
+}
+
+export function deleteBoard(id) {
+   return {
+      type: DELETE_BOARD,
+      payload: id
    }
 }
