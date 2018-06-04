@@ -10,6 +10,17 @@ h3 {
 h4 {
   margin: 0; }
 
+button {
+  transition-duration: 0.3s;
+  cursor: pointer; }
+
+button:hover {
+  transition-duration: 0.3s;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); }
+
+input[type=submit] {
+  cursor: pointer; }
+
 .app {
   width: 80%;
   margin: auto; }
@@ -338,6 +349,7 @@ h4 {
   float: left;
   margin-left: 1em;
   width: 3em;
+  height: 3em;
   background-color: transparent; }
 
 .button-right {
@@ -345,12 +357,15 @@ h4 {
   background-color: transparent;
   float: right;
   margin-right: 1em;
-  width: 3em; }
+  width: 3em;
+  height: 3em; }
 
 .button-delete {
   display: inline-block;
-  background-color: #E57373;
-  width: 5em; }
+  background-color: #F5F5F5;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%; }
 
 .story-item-text {
   display: block;
