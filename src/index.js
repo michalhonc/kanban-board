@@ -1,29 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { applyMiddleware, createStore } from 'redux';
+import { createStore } from 'redux';
 import './App.css';
 import App from './components/app';
 import reducers from './reducers';
 import registerServiceWorker from './registerServiceWorker';
+import throttle from 'lodash/throttle';
+import { loadState, saveState } from './localStorage';
 
 
+const persistedState = loadState();
 
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const store = createStore(
+   reducers,
+   persistedState,
+   devTools
+)
+
+store.subscribe(throttle(() => {
+   saveState({
+      board: store.getState().board
+   });
+}, 1000));
+
 
 ReactDOM.render(
-   <Provider store={createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())}>
-      <div>
-         <BrowserRouter>
-            <Switch>
-               <Route to="/" component={App}/>
-            </Switch>
-         </BrowserRouter>
-      </div>
+   <Provider store={store}>
+      <App />
    </Provider>
    , document.getElementById('root'));
 registerServiceWorker();
-
-

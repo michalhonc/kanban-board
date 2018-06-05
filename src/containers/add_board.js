@@ -6,7 +6,9 @@ import { addBoard } from '../actions/index';
 class AddBoard extends React.Component {
    constructor(props) {
       super(props);
-      this.state = { term: '' };
+      this.state = { 
+         term: '',
+       };
 
       this.onFormSubmit = this.onFormSubmit.bind(this);
       this.onInputChange = this.onInputChange.bind(this);
@@ -14,8 +16,12 @@ class AddBoard extends React.Component {
 
    onFormSubmit(event) {
       event.preventDefault();
-      this.props.addBoard(this.state.term);
-      this.setState({ term: '' });
+      if(this.state.term) {
+         this.props.addBoard(this.state.term);
+         this.setState({ term: '' });   
+      } else {
+         alert("Cannot add a board without a name")
+      }
    }
 
    onInputChange(event) {
@@ -26,7 +32,8 @@ class AddBoard extends React.Component {
       return (
          <div className="add-board">
             <form onSubmit={this.onFormSubmit}>
-               <input value={this.state.term} onChange={this.onInputChange} placeholder="Add a new board.." />
+               <input  
+                  value={this.state.term} onChange={this.onInputChange} placeholder="Add a new board.." />
                <button className="input-add" type="submit">add</button>        
             </form>
          </div>

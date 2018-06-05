@@ -13,6 +13,7 @@ $font: -apple-system,
 BlinkMacSystemFont,
 sans-serif;
 body {
+  height:100%;
   margin: 0;
   padding: 0 0 5em 0;
   font-family: $font;
@@ -43,6 +44,8 @@ input[type=submit] {
 
 .app {
   width: 80%;
+  min-height:100%;
+  margin-bottom: -3em;
   margin: auto;
 }
 
@@ -88,6 +91,8 @@ input[type=submit] {
   box-shadow: 0 0 20px 1px $darkgrey;
   transition-duration: 0.25s;
 }
+
+
 
 .board {
   display: grid;
@@ -217,6 +222,7 @@ input[type=submit] {
   background-color: transparent;
   transition-duration: 0.2s;
   color: transparent;
+  border-radius: 50%;
 }
 
 .delete-board:hover {

@@ -1,35 +1,7 @@
 import { FETCH_BOARD, ADD_STORY, ADD_BOARD, MOVE_STORY, DELETE_STORY, DELETE_BOARD } from '../actions/index';
 import shortid from 'shortid';
 
-const defaultState = 
-   [{
-      order: 0,
-      title: 'backlog',
-      tickets: [
-         {
-            id: '13',
-            name: 'B',
-            desc: '',
-            status: 'New',
-            type: 'user-story',
-         }
-      ]
-   },
-   {
-      order: 1,
-      title: 'nolog',
-      tickets: [
-         {
-            id: '11234',
-            name: 'A',
-            desc: '33333333333333333333333333333333333333333333333333333333333333333333333333333333333333323333333333333333333333333333333333333333333',
-            status: 'New',
-            type: 'defect',
-         }
-      ]
-   }]
-
-export default function(state = defaultState, action) {
+export default function(state = [], action) {
    switch (action.type) {
       case FETCH_BOARD:
             return state;

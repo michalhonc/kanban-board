@@ -33,11 +33,14 @@ class AddPost extends React.Component {
 
    onSubmit(event) {
       event.preventDefault();
-
-      this.props.addStory(this.state, this.props.title);
+      if(this.state.storyName) {
+            this.props.addStory(this.state, this.props.title);
+            this.setState({ storyName: '' });
+            this.setState({ storyDesc: '' });
+      } else {
+            alert("Story has to have a name");
+      }
       
-      this.setState({ storyDesc: '' });
-      this.setState({ storyName: '' });
    }
 
    render() {
