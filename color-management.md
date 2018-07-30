@@ -4,7 +4,6 @@
 Barvy používáme ve formátu HEX.
 
 Pro barvy, které potřebují určitý stupeň průhlednosti používáme LESS fci `fade()` , která dokáže pracovat s opacity u HEX barev. Output fce je barva ve formátu *rgba*, tj. žádný problém s kompatibilitou u prohlížečů.
-
   
 
 ## Obecné proměnné
@@ -97,11 +96,11 @@ color| #007ACC|![alt text](http://www.thecolorapi.com/id?hex=007ACC&format=svg)
 color| #CA0000|![alt text](http://www.thecolorapi.com/id?hex=CA0000&format=svg)
 color| #D66E00|![alt text](http://www.thecolorapi.com/id?hex=D66E00&format=svg)
 **Barva borderu**||
-border| #EBEBEB| 1px
-border-bottom| #F2EFEF| 0.1rem
-border-right-color| #018766|
-border-right-color| #9F3378|
-border-right-color| #007ACC|
+border| #EBEBEB|![alt text](http://www.thecolorapi.com/id?hex=EBEBEB&format=svg)
+border-bottom| #F2EFEF|![alt text](http://www.thecolorapi.com/id?hex=F2EFEF&format=svg)
+border-right-color| #018766|![alt text](http://www.thecolorapi.com/id?hex=018766&format=svg)
+border-right-color| #9F3378|![alt text](http://www.thecolorapi.com/id?hex=9F3378&format=svg)
+border-right-color| #007ACC|![alt text](http://www.thecolorapi.com/id?hex=007ACC&format=svg)
 ## Barvy použité s proměnnou přímo u komponenty
 ```
 `````
